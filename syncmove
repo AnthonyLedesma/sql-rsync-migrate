@@ -1,0 +1,4 @@
+<!--This is rsync from the source-->
+rsync -a -v {SourceAbsPath} ssh  {USER}@{SERVER}:{DestinationAbsPath}
+<!--This is rsync from the destination-->
+rsync -a -v /var/www/ ssh  mth38en2mciv1qn@f76.e04.godaddywp.com:/var/www/ 
