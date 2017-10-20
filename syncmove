@@ -1,4 +1,21 @@
 <!--This is rsync from the source-->
 rsync -a -v {SourceAbsPath} ssh  {USER}@{SERVER}:{DestinationAbsPath}
+
 <!--This is rsync from the destination-->
-rsync -a -v /var/www/ ssh  mth38en2mciv1qn@f76.e04.godaddywp.com:/var/www/ 
+
+
+<!--Here we have the variable defining code for the script to use. Ideally we want this code to look for both the single and double quote delimiter to accomidate config variations -->
+
+-cowboy code
+(WPDBNAME=`cat wp-config.php | grep DB_NAME | cut -d \' -f 4`)
+(WPDBUSER=`cat wp-config.php | grep DB_USER | cut -d \' -f 4`)
+(WPDBPASS=`cat wp-config.php | grep DB_PASSWORD | cut -d \' -f 4`)
+
+-custom edits
+WPDBNAME=`cat wp-config.php | grep DB_NAME | cut -d \" -f 2`
+
+
+
+
+<!--Playing with egrep-->
+egrep 'DB_|_prefix' wp-config.php
